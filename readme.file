@@ -1,0 +1,60 @@
+First  we set this project 
+to follow step -:
+1. in your system have xampp server
+2. start xammp server
+3. go to option sql / creted database name moive_library(make check correct spelling)
+
+<!-- then this direct copy to sql then click ok -->
+
+CREATE DATABASE movie_library;
+
+USE movie_library;
+<!--  fisrt table -->
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+<!-- second table -->
+CREATE TABLE movies (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    omdb_id VARCHAR(20) NOT NULL UNIQUE,
+    title VARCHAR(255) NOT NULL,
+    year VARCHAR(10),
+    poster VARCHAR(255)
+);
+
+<!-- third table -->
+CREATE TABLE movie_lists (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    name VARCHAR(100),
+    is_public BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+<!-- fouth  table -->
+
+CREATE TABLE movie_list_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    list_id INT,
+    movie_id INT,
+    FOREIGN KEY (list_id) REFERENCES movie_lists(id),
+    FOREIGN KEY (movie_id) REFERENCES movies(id)
+);
+
+
+<!--  make check and proper all thing copy and type the  -->
+
+4. after that proper all code copy and placed at xammp folder at htdoc 
+5. after that  go to browser click seaach and type localhost/foldername/ then ok
+ also i provide users.sql file direct all thing  in xammp open and import file sql then databse created with table.
+ <!-- created by sandeep kumar singh
+ singhsandeepkumar008@gmail.com
+ 
+ 6299435686
+  -->
